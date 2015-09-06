@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_top_detail_info">
+
+        <TextView
+            android:id="@+id/textview_league"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/view_center"
+            android:layout_toStartOf="@+id/view_center"
+            android:contentDescription="@string/copy_league"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_detail_info"
+            android:paddingTop="@dimen/padding_detail_info"
+            android:text="@string/test_text"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/League" />
+
+        <View
+            android:id="@+id/view_center"
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:layout_centerHorizontal="true" />
+
+
+        <TextView
+            android:id="@+id/textview_match_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/view_center"
+            android:layout_toRightOf="@+id/view_center"
+            android:contentDescription="@string/copy_match_day"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_detail_info"
+            android:paddingTop="@dimen/padding_detail_info"
+            android:text="@string/test_text"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/League" />
+
+
+        <Button
+            android:id="@+id/button_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_match_day"
+            android:layout_gravity="center"
+            android:contentDescription="@string/copy_share"
+            android:drawableLeft="@android:drawable/ic_menu_share"
+            android:drawableStart="@android:drawable/ic_menu_share"
+            android:gravity="center"
+            android:paddingLeft="@dimen/padding_button_share"
+            android:paddingRight="@dimen/padding_button_share"
+            android:text="@string/share_text" />
+
+    </RelativeLayout>
+
+
+</merge>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/imageview_home_logo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/textview_score"
+        android:layout_toStartOf="@+id/textview_score"
+        android:contentDescription="@string/copy_home_logo"
+        android:gravity="center"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textview_score"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/copy_score"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_score" />
+
+    <ImageView
+        android:id="@+id/imageview_away_logo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/textview_score"
+        android:layout_toRightOf="@+id/textview_score"
+        android:contentDescription="@string/copy_away_logo"
+        android:gravity="center"
+        android:src="@drawable/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/textview_home_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_home_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/textview_score"
+        android:layout_toStartOf="@+id/textview_score"
+        android:contentDescription="@string/copy_home_name"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_home_name" />
+
+    <TextView
+        android:id="@+id/textview_match_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_score"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/copy_match_time"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_match_time" />
+
+    <TextView
+        android:id="@+id/textview_away_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_away_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/textview_score"
+        android:layout_toRightOf="@+id/textview_score"
+        android:contentDescription="@string/copy_away_name"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_away_name" />
+
+
+    <FrameLayout
+        android:id="@+id/layout_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_home_name"
+        android:visibility="gone">
+
+        <include layout="@layout/layout_detail" />
+
+    </FrameLayout>
+
+</RelativeLayout>
+
+

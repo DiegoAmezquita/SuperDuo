@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_widget"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textview_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/copy_date"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_date" />
+
+
+    <ImageView
+        android:id="@+id/imageview_home_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_center"
+        android:layout_below="@+id/textview_date"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/textview_score"
+        android:layout_toStartOf="@+id/textview_score"
+        android:contentDescription="@string/copy_home_logo"
+        android:gravity="center"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textview_score"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_center"
+        android:layout_below="@+id/textview_date"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/copy_score"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_score" />
+
+    <ImageView
+        android:id="@+id/imageview_away_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_center"
+        android:layout_below="@+id/textview_date"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/textview_score"
+        android:layout_toRightOf="@+id/textview_score"
+        android:contentDescription="@string/copy_away_logo"
+        android:gravity="center"
+        android:src="@drawable/ic_launcher" />
+
+
+    <FrameLayout
+        android:id="@+id/view_center"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_centerInParent="true" />
+
+
+    <TextView
+        android:id="@+id/textview_home_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_center"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/textview_score"
+        android:layout_toStartOf="@+id/textview_score"
+        android:contentDescription="@string/copy_home_name"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_home_name" />
+
+    <TextView
+        android:id="@+id/textview_match_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_center"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/copy_match_time"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_match_time" />
+
+    <TextView
+        android:id="@+id/textview_away_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_center"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/textview_score"
+        android:layout_toRightOf="@+id/textview_score"
+        android:contentDescription="@string/copy_away_name"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        tools:text="@string/copy_away_name" />
+
+
+</RelativeLayout>
