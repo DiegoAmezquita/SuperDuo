@@ -16,7 +16,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,8 +69,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             nextFragment = getSupportFragmentManager().getFragment(savedInstanceState, "current_fragment");
             navigationView.onRestoreInstanceState(savedInstanceState);
             fromSavedInstance = true;
-        }
 
+            FragmentManager fm = getSupportFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+
+        }
 
 
         initReceiver();
@@ -153,10 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-        Log.e("DIEGO DEBUG", "onNavigationItemSelected");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        if (nextFragment == null||!fromSavedInstance) {
+        if (nextFragment == null || !fromSavedInstance) {
             switch (menuItem.getItemId()) {
                 default:
                 case R.id.drawer_list_books:
@@ -171,8 +172,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container, nextFragment);
+
         fragmentTransaction.commit();
 
         menuItem.setChecked(true);

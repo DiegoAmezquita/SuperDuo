@@ -8,12 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -110,6 +110,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                         .setPrompt(prompt)
                         .initiateScan();
 
+
             }
         });
 
@@ -117,17 +118,22 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             @Override
             public void onClick(View view) {
                 editTextEan.setText("");
+                clearFields();
             }
         });
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent bookIntent = new Intent(getActivity(), BookService.class);
-                bookIntent.putExtra(BookService.EAN, editTextEan.getText().toString());
-                bookIntent.setAction(BookService.DELETE_BOOK);
-                getActivity().startService(bookIntent);
-                editTextEan.setText("");
+                String eanCode = editTextEan.getText().toString();
+                if (!TextUtils.isEmpty(eanCode)) {
+                    Intent bookIntent = new Intent(getActivity(), BookService.class);
+                    bookIntent.putExtra(BookService.EAN, eanCode);
+                    bookIntent.setAction(BookService.DELETE_BOOK);
+                    getActivity().startService(bookIntent);
+                    editTextEan.setText("");
+                    clearFields();
+                }
             }
         });
 
@@ -145,7 +151,6 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             ean = prefixEan + ean;
         }
         if (ean.length() < 13) {
-            clearFields();
             return;
         }
         //Once we have an ISBN, start a book intent

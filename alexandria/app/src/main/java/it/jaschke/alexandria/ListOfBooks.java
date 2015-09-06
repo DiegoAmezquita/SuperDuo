@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ import it.jaschke.alexandria.data.AlexandriaContract;
 public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String SEARCH = "search";
+    private static final String POSITION = "position";
 
     private BookListAdapter bookListAdapter;
     private int position = ListView.INVALID_POSITION;
@@ -40,6 +40,8 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
     @Bind(R.id.textView_empty)
     TextView textViewEmpty;
+
+    private int positionSelected = -1;
 
     public ListOfBooks() {
     }
@@ -72,11 +74,7 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor cursor = bookListAdapter.getCursor();
-                if (cursor != null && cursor.moveToPosition(position)) {
-                    ((Callback) getActivity())
-                            .onItemSelected(cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry._ID)));
-                }
+                loadBookDetail(position);
             }
         });
 
@@ -100,12 +98,20 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
         if (savedInstanceState != null) {
             searchView.setQuery(savedInstanceState.getString(SEARCH), true);
-            Log.e("DIEGO DEBUG", "onSaveInstanceState NOT NULL " +savedInstanceState.getString(SEARCH));
-        }else{
-            Log.e("DIEGO DEBUG", "onSaveInstanceState NULL");
+            positionSelected = savedInstanceState.getInt(POSITION, -1);
+            loadBookDetail(positionSelected);
         }
 
         return rootView;
+    }
+
+    private void loadBookDetail(int position) {
+        positionSelected = position;
+        Cursor cursor = bookListAdapter.getCursor();
+        if (positionSelected >= 0 && cursor != null && cursor.moveToPosition(position)) {
+            ((Callback) getActivity())
+                    .onItemSelected(cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry._ID)));
+        }
     }
 
     private void restartLoader() {
@@ -162,7 +168,7 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putString(SEARCH, searchView.getQuery().toString());
-        Log.e("DIEGO DEBUG","onSaveInstanceState "+searchView.getQuery().toString());
+        outState.putInt(POSITION, positionSelected);
         super.onSaveInstanceState(outState);
     }
 }
